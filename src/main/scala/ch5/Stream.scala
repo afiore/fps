@@ -120,6 +120,8 @@ object Stream {
 
   def fibs: Stream[Int] = unfold((0, 1)) { case (a, b) => Some((a, (b, a + b))) }
 
+  def from(n: Int): Stream[Int] = unfold(n)(n => Some((n, n+1)))
+
   def empty[A]: Stream[A] = Empty
 
   def apply[A](as: A*): Stream[A] =
